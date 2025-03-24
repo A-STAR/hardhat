@@ -1,0 +1,9 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.19"
+  }
+}
