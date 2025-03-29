@@ -1,0 +1,9 @@
+{
+  "name": "tasks",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "devDependencies": {
+    "hardhat": "^2.22.19",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0"
+  }
+}
