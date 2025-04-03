@@ -1,4 +1,4 @@
-import { HardhatUserConfig, task } from "hardhat/config";
+import { HardhatUserConfig, task, types } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 
 task("balance", "Prints an account's balance")
@@ -7,6 +7,32 @@ task("balance", "Prints an account's balance")
     const balance = await ethers.provider.getBalance(taskArgs.account);
 
     console.log(ethers.formatEther(balance), "ETH");
+  });
+
+
+task("hello", "Prints 'Hello, World!'", async function (taskArguments, hre, runSuper) {
+  console.log("Hello, World!");
+});
+
+task("delayed-hello", "Prints 'Hello, World!' after a second", async () => {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Hello, World!");
+      resolve();
+    }, 1000);
+  });
+});
+
+task("hello", "Prints a greeting")
+  .addOptionalParam("greeting", "The greeting to print", "Hello, World!")
+  .setAction(async ({ greeting }) => console.log(greeting));
+
+task("hello", "Prints 'Hello' multiple times")
+  .addOptionalParam("times", "The number of times to print 'Hello'", 1, types.int)
+  .setAction(async ({ times }) => {
+    for (let i = 0; i < times; i++) {
+      console.log("Hello");
+    }
   });
 
 const config: HardhatUserConfig = {
