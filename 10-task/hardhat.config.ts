@@ -1,4 +1,4 @@
-import { HardhatUserConfig, task, types } from "hardhat/config";
+import { HardhatUserConfig, subtask, task, types } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 
 task("balance", "Prints an account's balance")
@@ -33,6 +33,17 @@ task("hello", "Prints 'Hello' multiple times")
     for (let i = 0; i < times; i++) {
       console.log("Hello");
     }
+  });
+
+
+task("hello-world", "Prints a hello world message").setAction(async (taskArgs, hre) => {
+  await hre.run("print", { message: "Hello, World!" });
+});
+
+subtask("print", "Prints a message")
+  .addParam("message", "The message to print")
+  .setAction(async (taskArgs) => {
+    console.log(taskArgs.message);
   });
 
 const config: HardhatUserConfig = {
