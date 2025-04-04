@@ -1,4 +1,4 @@
-import { HardhatUserConfig, subtask, task, types } from "hardhat/config";
+import { HardhatUserConfig, scope, subtask, task, types } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 
 task("balance", "Prints an account's balance")
@@ -44,6 +44,32 @@ subtask("print", "Prints a message")
   .addParam("message", "The message to print")
   .setAction(async (taskArgs) => {
     console.log(taskArgs.message);
+  });
+
+
+const myScope = scope("my-scope", "Scope description");
+
+myScope.task("my-task", "Do something")
+  .setAction(async () => {
+    console.log("Do something");
+  });
+
+myScope.task("my-other-task", "Do something else")
+  .setAction(async () => {
+    console.log("Do something else");
+  });
+
+myScope.task("my-both-tasks", "Run both tasks")
+  .setAction(async (taskArgs, hre) => {
+    await hre.run({
+      scope: "my-scope",
+      task: "my-task"
+    });
+
+    await hre.run({
+      scope: "my-scope",
+      task: "my-other-task"
+    });
   });
 
 const config: HardhatUserConfig = {
