@@ -1,0 +1,13 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "main": "scripts/accounts.ts",
+  "scripts": {
+    "accounts": "npx tsx scripts/accounts.ts"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.19",
+    "tsx": "^4.19.3"
+  }
+}
