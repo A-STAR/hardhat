@@ -1,0 +1,9 @@
+{
+  "name": "viem",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
+    "hardhat": "^2.23.0"
+  }
+}
